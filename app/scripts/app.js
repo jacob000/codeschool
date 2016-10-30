@@ -20,11 +20,24 @@ codeschoolApp.config(function($routeProvider) {
   });
   
   
- codeschoolApp.controller('mainController', function($scope) {
-        // create a message to display in our view
-        $scope.message = 'Everyone come and see how good I look!';
+ codeschoolApp.controller('mainController', function($scope, $http) {
+     
+        $http({method: 'GET', url: 'http://localhost/api/web/index.php/'}).
+        success(function(data, status, headers, config) {
+            $scope.posts=data;
+        }).
+        error(function(data, status, headers, config) {
+            alert("Coś poszło nie tak");
+        });
     });
   
-  codeschoolApp.controller('UserShowCtrl', function($scope) {
-        $scope.message = 'Look! I am an about page.';
+  codeschoolApp.controller('UserShowCtrl', function($scope, $http) {
+        
+        $http({method: 'GET', url: 'http://localhost/api/web/index.php/user/13'}).
+        success(function(data, status, headers, config) {
+            $scope.message=data.login;
+        }).
+        error(function(data, status, headers, config) {
+            alert("Coś poszło nie tak");
+        });
     });
