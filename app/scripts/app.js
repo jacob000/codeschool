@@ -13,6 +13,10 @@ codeschoolApp.config(function($routeProvider) {
       when('/user/:userID', {
         templateUrl: 'views/user_show.html',
         controller: 'UserShowCtrl'
+      }).
+      when('/courses', {
+        templateUrl: 'views/courses_list.html',
+        controller: 'CoursesListCtrl'
       });
     //   otherwise({
     //     redirectTo: '/phones'
@@ -25,6 +29,16 @@ codeschoolApp.config(function($routeProvider) {
         $http({method: 'GET', url: 'http://localhost/api/web/index.php/'}).
         success(function(data, status, headers, config) {
             $scope.posts=data;
+        }).
+        error(function(data, status, headers, config) {
+            alert("Coś poszło nie tak");
+        });
+    });
+ codeschoolApp.controller('CoursesListCtrl', function($scope, $http) {
+     
+        $http({method: 'GET', url: 'http://localhost/api/web/index.php/courses'}).
+        success(function(data, status, headers, config) {
+            $scope.courses=data;
         }).
         error(function(data, status, headers, config) {
             alert("Coś poszło nie tak");
