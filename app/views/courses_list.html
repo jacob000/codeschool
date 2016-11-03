@@ -1,24 +1,10 @@
-<!--<div class="row">
-    <div class="col-md-8 col-md-offset-2" ng-repeat="cours in courses" >
-        <div class="panel panel-primary">
-            
-        <div class="panel-heading">
-            <h3 class="panel-title">{{ cours.name }}</h3>
-        </div>
-        <div class="panel-body">
-            {{ cours.description }}
-        </div>
-    </div>
-</div>  -->
-
-
 <div class="row">
 <div class="col-md-8 col-md-offset-2">
   <div class="col-sm-6 col-md-6" ng-repeat="cours in courses">
     <div class="thumbnail">
-      <img style="float: left; margin: 15px;" src=" {{ cours.img}}" alt="...">
+      <img style="float: left; margin: 15px;" src=" {{ cours.img }}" alt="...">
       <div class="caption">
-        <h3>{{ cours.name }}</h3>
+        <a href="#/course/{{ cours.id_cours }}" ><h3>{{ cours.name }}</h3></a><h4>{{ cours.count_lesson }} lekcji</h4>
         <p>{{ cours.description }}</p>
         <!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>-->
       </div>
@@ -26,5 +12,3 @@
   </div>
 </div>
 </div>
-
-<!--<img src="" alt="..." class="img-rounded">-->
